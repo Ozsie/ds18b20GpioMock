@@ -4,14 +4,14 @@
 let fs = require('fs');
 let mkdirp = require('mkdirp');
 
-let sysDS18B20Path = '/sys/bus/w1/devices/';
-var mockDS18B20Path = './sys/bus/w1/devices';
+let sysPath = '/sys/bus/w1/devices/';
+var mockPath = './sys/bus/w1/devices';
 
 let ds18b20FileContents = '00 11 22 33 44 55 aa bb cc dd : crc=66 YES\n77 88 99 ee ff 00 11 22 33 44 t=';
 
 var ds18b20 = {};
 
-let sensorFunction = function() {
+let functionHardware = function() {
   for (var id in ds18b20) {
     var sensor = ds18b20[id];
     if (sensor.stop || sensor.behavior !== 'function') {
@@ -23,10 +23,10 @@ let sensorFunction = function() {
 
 let handleFunctionSensor = function(id, sensor) {
   var value = sensor.temperature();
-  fs.writeFileSync(mockDS18B20Path + '/' + id + '/w1_slave', ds18b20FileContents + value);
+  fs.writeFileSync(mockPath + '/' + id + '/w1_slave', ds18b20FileContents + value);
 };
 
-let sensorStatic = function() {
+let staticHardware = function() {
   for (var id in ds18b20) {
     var sensor = ds18b20[id];
     if (sensor.stop || sensor.behavior !== 'static') {
@@ -37,7 +37,7 @@ let sensorStatic = function() {
 };
 
 let handleStaticSensor = function(id, sensor) {
-  fs.writeFileSync(mockDS18B20Path + '/' + id + '/w1_slave', ds18b20FileContents + parseInt(sensor.temperature * 1000));
+  fs.writeFileSync(mockPath + '/' + id + '/w1_slave', ds18b20FileContents + parseInt(sensor.temperature * 1000));
 };
 
 let updateSensors = function(callback) {
@@ -45,7 +45,7 @@ let updateSensors = function(callback) {
   let addW1Slave = function(key, callback) {
     let sensor = ds18b20[key];
     sensor.stop = false;
-    mkdirp(mockDS18B20Path + '/' + key, function(err) {
+    mkdirp(mockPath + '/' + key, function(err) {
       if (!err) {
         sensor.added = true;
         if (sensor.behavior === 'external') {
@@ -77,15 +77,15 @@ let stop = function() {
   ds18b20 = {};
 };
 
-let addDS18B20 = function(id, sensor, callback) {
+let add = function(id, sensor, callback) {
   if (ds18b20[id]) {
     callback(new Error("sensor already registered"));
   } else {
-    setDS18B20(id, sensor, callback);
+    set(id, sensor, callback);
   }
 };
 
-let setDS18B20 = function(id, sensor, callback) {
+let set = function(id, sensor, callback) {
   ds18b20[id] = sensor;
   updateSensors(callback);
 };
@@ -96,12 +96,12 @@ let remove = function(id, callback) {
 };
 
 module.exports = {
-  functionHardware: sensorFunction,
-  staticHardware: sensorStatic,
+  functionHardware: functionHardware,
+  staticHardware: staticHardware,
   stop: stop,
-  add: addDS18B20,
-  set: setDS18B20,
+  add: add,
+  set: set,
   remove: remove,
-  sysPath: sysDS18B20Path,
-  mockPath: mockDS18B20Path
+  sysPath: sysPath,
+  mockPath: mockPath
 };
