@@ -1,6 +1,6 @@
 {
   "name": "ds18b20-gpio-mock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mocked ds18b20 for use with gpio-mock",
   "main": "ds18b20.js",
   "scripts": {
