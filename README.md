@@ -1,8 +1,8 @@
 # DS18B20 GPIO Mock
 [![NPM](https://nodei.co/npm/ds18b20-gpio-mock.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/ds18b20-gpio-mock/)
 
-[![Build Status](https://travis-ci.org/Ozsie/ds18B20GpioMock.svg?branch=master)](https://travis-ci.org/Ozsie/ds18B20GpioMock)
-[![Coverage Status](https://coveralls.io/repos/github/Ozsie/ds18B20GpioMock/badge.svg?branch=master)](https://coveralls.io/github/Ozsie/ds18B20GpioMock?branch=master)
+[![Build Status](https://travis-ci.org/Ozsie/ds18b20GpioMock.svg?branch=master)](https://travis-ci.org/Ozsie/ds18b20GpioMock)
+[![Coverage Status](https://coveralls.io/repos/github/Ozsie/ds18b20GpioMock/badge.svg?branch=master)](https://coveralls.io/github/Ozsie/ds18b20GpioMock?branch=master)
 
 A DS18B20 module for [GPIO Mock](https://www.npmjs.com/package/gpio-mock).
 
