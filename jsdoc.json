@@ -1,0 +1,8 @@
+{
+  "plugins": ["plugins/markdown"],
+  "source": {
+    "include": [ "ds18b20.js", "package.json", "README.md" ],
+    "includePattern": ".+\\.js(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  }
+}

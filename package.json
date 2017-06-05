@@ -1,0 +1,38 @@
+{
+  "name": "ds18b20-gpio-mock",
+  "version": "1.0.0",
+  "description": "Mocked ds18b20 for use with gpio-mock",
+  "main": "ds18b20.js",
+  "scripts": {
+    "publish": "git tag -a v$npm_package_version -m 'tag version v$npm_package_version'",
+    "postpublish": "git push --tags",
+    "pretest": "jshint ds18b20.js",
+    "test": "istanbul cover _mocha test --recursive",
+    "posttest": "jsdoc -c ./jsdoc.json -d ./docs",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+  },
+  "keywords": [
+    "ds18b20",
+    "rpi",
+    "gpio",
+    "mock"
+  ],
+  "author": "Oscar Djupfeldt",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ozsie/ds18b20GpioMock.git"
+  },
+  "dependencies": {
+    "mkdirp": "0.5.1"
+  },
+  "devDependencies": {
+    "jshint": "2.9.4",
+    "mocha": "^3.2.0",
+    "chai": "^4.0.0-canary.1",
+    "istanbul": "^0.4.5",
+    "coveralls": "^2.13.1",
+    "jsdoc": "^3.4.3",
+    "gpio-mock": "^1.2.0"
+  }
+}

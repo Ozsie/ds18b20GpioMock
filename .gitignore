@@ -1,0 +1,6 @@
+node_modules
+coverage
+.coveralls.yml
+npm-debug.log
+ds18b20GpioMock.iml
+sys
