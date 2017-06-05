@@ -15,9 +15,9 @@ let functionHardware = function() {
   for (var id in ds18b20) {
     var sensor = ds18b20[id];
     if (sensor.stop || sensor.behavior !== 'function') {
-      return;
+      continue;
     }
-     handleFunctionSensor(id, sensor);
+    handleFunctionSensor(id, sensor);
   }
 };
 
@@ -30,7 +30,7 @@ let staticHardware = function() {
   for (var id in ds18b20) {
     var sensor = ds18b20[id];
     if (sensor.stop || sensor.behavior !== 'static') {
-      return;
+      continue;
     }
     handleStaticSensor(id, sensor);
   }
