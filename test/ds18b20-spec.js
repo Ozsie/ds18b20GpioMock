@@ -1,6 +1,5 @@
 'use strict';
 
-let rimraf = require('rimraf');
 let chai = require('chai');
 let fs = require('fs');
 let expect = chai.expect; // we are using the "expect" style of Chai
