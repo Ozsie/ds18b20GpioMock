@@ -5,3 +5,5 @@ node_modules
 coverage
 ds18b20GpioMock.iml
 sys
+yarn-error.log
+yarn.lock

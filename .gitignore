@@ -4,3 +4,4 @@ coverage
 npm-debug.log
 ds18b20GpioMock.iml
 sys
+yarn-error.log
